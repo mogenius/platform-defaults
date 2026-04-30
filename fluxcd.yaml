@@ -1,0 +1,6 @@
+apiVersion: mogenius.com/v1alpha1
+kind: PlatformDefault
+spec:
+  # renovate: datasource=helm registryUrl=https://controlplane.github.io/charts chart=flux-operator
+  version: 0.48.0
+  valuesObject: {}
