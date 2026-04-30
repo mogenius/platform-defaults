@@ -1,0 +1,18 @@
+apiVersion: mogenius.com/v1alpha1
+kind: PlatformDefault
+spec:
+  # renovate: datasource=helm registryUrl=https://helm.traefik.io/traefik chart=traefik
+  version: 39.0.7
+  valuesObject:
+    deployment:
+      kind: DaemonSet
+    logs:
+      access:
+        enabled: true
+    additionalArguments:
+      - "--metrics.prometheus.addEntryPointsLabels=true"
+      - "--metrics.prometheus.addServicesLabels=true"
+      - "--metrics.prometheus.addRoutersLabels=true"
+      - "--entrypoints.web.http.encodedcharacters.allowencodedslash=true"
+      - "--entrypoints.websecure.http.encodedcharacters.allowencodedslash=true"
+      - "--ping=true"

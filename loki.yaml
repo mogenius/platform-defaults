@@ -1,0 +1,6 @@
+apiVersion: mogenius.com/v1alpha1
+kind: PlatformDefault
+spec:
+  # renovate: datasource=helm registryUrl=https://grafana.github.io/helm-charts chart=loki
+  version: 13.6.1
+  valuesObject: {}

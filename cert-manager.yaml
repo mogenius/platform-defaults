@@ -1,0 +1,80 @@
+apiVersion: mogenius.com/v1alpha1
+kind: PlatformDefault
+spec:
+  # renovate: datasource=helm registryUrl=https://charts.jetstack.io chart=cert-manager
+  version: 1.20.0
+  valuesObject:
+    installCRDs: true
+
+    global:
+      logLevel: 1 # Warning
+      revisionHistoryLimit: 1
+
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+    containerSecurityContext:
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+
+    config:
+      enableGatewayAPI: true
+
+    extraArgs:
+      - --logging-format=json
+    resources:
+      requests:
+        cpu: 30m
+        memory: 125Mi
+      limits:
+        cpu: 60m
+        memory: 250Mi
+    webhook:
+      resources:
+        requests:
+          cpu: 20m
+          memory: 80M
+        limits:
+          cpu: 20m
+          memory: 80M
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containerSecurityContext:
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+      extraArgs:
+        - --logging-format=json
+    cainjector:
+      enabled: true
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+      containerSecurityContext:
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100M
+    startupapicheck:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100M
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+      containerSecurityContext:
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+      extraArgs:
+        - --logging-format=json

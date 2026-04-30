@@ -1,0 +1,20 @@
+apiVersion: mogenius.com/v1alpha1
+kind: PlatformDefault
+spec:
+  # renovate: datasource=helm registryUrl=https://kubernetes-sigs.github.io/external-dns/ chart=external-dns
+  version: 1.21.1
+  valuesObject:
+    revisionHistoryLimit: 1
+    
+    podSecurityContext:
+      runAsUser: 65534
+      runAsGroup: 65534
+      seccompProfile:
+        type: RuntimeDefault
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+    
+    logFormat: json
+    logLevel: warning
