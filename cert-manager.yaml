@@ -2,7 +2,7 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=helm registryUrl=https://charts.jetstack.io chart=cert-manager
-  version: 1.20.0
+  version: v1.20.2
   valuesObject:
     installCRDs: true
 
