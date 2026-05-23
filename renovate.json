@@ -1,11 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["\\.yaml$"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[^\\s]+) registryUrl=(?<registryUrl>[^\\s]+) chart=(?<depName>[^\\s]+)\\n\\s+version:\\s+(?<currentValue>[^\\s]+)"
-      ]
+      "customType": "regex",
+      "managerFilePatterns": ["/\\.yaml$/"],
+      "matchStrings": ["# renovate: datasource=(?<datasource>[^\\s]+) registryUrl=(?<registryUrl>[^\\s]+) chart=(?<depName>[^\\s]+)\\n\\s+version:\\s+(?<currentValue>[^\\s]+)"]
     }
   ]
 }
