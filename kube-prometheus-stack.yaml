@@ -2,5 +2,5 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=helm registryUrl=https://prometheus-community.github.io/helm-charts chart=kube-prometheus-stack
-  version: 86.0.0
+  version: 86.1.0
   valuesObject: {}
