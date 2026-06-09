@@ -2,7 +2,7 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=helm registryUrl=https://helm.traefik.io/traefik chart=traefik
-  version: 40.2.0
+  version: 40.3.0
   valuesObject:
     deployment:
       kind: DaemonSet
