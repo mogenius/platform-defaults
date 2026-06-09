@@ -2,7 +2,7 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=helm registryUrl=https://grafana.github.io/helm-charts chart=alloy
-  version: 1.8.2
+  version: 1.9.0
   valuesObject:
 
     global:
