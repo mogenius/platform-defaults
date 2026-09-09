@@ -2,5 +2,55 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=helm registryUrl=https://grafana.github.io/helm-charts chart=loki
-  version: 13.6.1
-  valuesObject: {}
+  #
+  # Was pinned to 13.6.1, a version that does not exist: the chart's newest
+  # release is in the 7.x line. Renovate could not catch it either, because a
+  # pin above every published version simply looks like "no update available".
+  version: 7.3.0
+  valuesObject:
+    # The chart renders nothing without a storage decision -- it fails on
+    # "Please define loki.storage.bucketNames.chunks" -- so an empty
+    # valuesObject made Loki uninstallable whatever the version said.
+    #
+    # This is the smallest configuration that stands up: one pod, logs on a
+    # local volume, no object storage and no caches. Enough for a cluster to
+    # collect its own logs, and deliberately not a production topology -- for
+    # that, point loki.storage at a bucket and move off SingleBinary. Both are
+    # overridable per cluster through spec.loki.patches.
+    deploymentMode: SingleBinary
+    loki:
+      commonConfig:
+        replication_factor: 1
+      storage:
+        type: filesystem
+      schemaConfig:
+        configs:
+          - from: "2024-04-01"
+            store: tsdb
+            object_store: filesystem
+            schema: v13
+            index:
+              prefix: loki_index_
+              period: 24h
+    singleBinary:
+      replicas: 1
+    # The scalable topology's components, off: SingleBinary replaces them, and
+    # left at their defaults they would be scheduled alongside it.
+    read:
+      replicas: 0
+    write:
+      replicas: 0
+    backend:
+      replicas: 0
+    # Memcached deployments the scalable topology brings. A single binary on a
+    # filesystem has nothing to cache across.
+    chunksCache:
+      enabled: false
+    resultsCache:
+      enabled: false
+    # Test and canary workloads. Useful when validating the chart itself, noise
+    # in a platform install.
+    lokiCanary:
+      enabled: false
+    test:
+      enabled: false

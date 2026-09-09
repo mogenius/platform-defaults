@@ -6,9 +6,10 @@ spec:
   valuesObject:
     deployment:
       kind: DaemonSet
-    logs:
-      access:
-        enabled: true
+    # Renamed in chart 41.x: this was logs.access.enabled until 39.x, and the
+    # chart's schema rejects the old key outright rather than ignoring it.
+    accessLog:
+      enabled: true
     additionalArguments:
       - "--metrics.prometheus.addEntryPointsLabels=true"
       - "--metrics.prometheus.addServicesLabels=true"
