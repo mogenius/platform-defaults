@@ -1,12 +1,8 @@
 apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
-  # renovate: datasource=helm registryUrl=https://grafana.github.io/helm-charts chart=loki
-  #
-  # Was pinned to 13.6.1, a version that does not exist: the chart's newest
-  # release is in the 7.x line. Renovate could not catch it either, because a
-  # pin above every published version simply looks like "no update available".
-  version: 7.3.0
+  # renovate: datasource=helm registryUrl=https://grafana-community.github.io/helm-charts chart=loki
+  version: 18.12.1
   valuesObject:
     # The chart renders nothing without a storage decision -- it fails on
     # "Please define loki.storage.bucketNames.chunks" -- so an empty
