@@ -83,6 +83,73 @@ An empty output means the values satisfy the chart's `values.schema.json` and
 its templates. That is the whole check, and it catches every failure found so
 far.
 
+## What a component needs from the PlatformConfig
+
+Most components install with `enabled: true` and nothing else. Two of them
+cannot, because they are useless without cluster-specific input, and the UI
+links here when that input is missing.
+
+### external-secrets-operator
+
+Syncs secrets from an external vault into the cluster, and is also how other
+components get their credentials without writing them into git. It needs at
+least one vault:
+
+```yaml
+externalSecretsOperator:
+  enabled: true
+  vaults:
+    - name: my-vault
+      type: vault                # a provider key from external-secrets.io
+      provider:                  # that provider's config block, verbatim
+        server: https://vault.example.com
+        path: secret
+        version: v2
+```
+
+Each entry becomes a
+[ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/)
+named after it: the operator writes the `provider` block verbatim under
+`spec.provider.<type>`, so `type` and the block's fields are whatever the
+[external-secrets provider docs](https://external-secrets.io/latest/provider/hashicorp-vault/)
+say for your vault — HashiCorp Vault, AWS Secrets Manager, GCP, Azure Key
+Vault, and so on. Nothing is validated here; a wrong provider block surfaces
+as the ClusterSecretStore's own status.
+
+Other components then reference a store through their `externalSecret` block:
+`vault` names the store, `path` and `key` address the secret inside it. When
+exactly one vault is declared, `vault` may be omitted — the operator takes the
+first one.
+
+### external-dns
+
+Publishes DNS records for ingresses and services. It needs to know which DNS
+provider to drive and where the credential for it lives:
+
+```yaml
+externalDns:
+  enabled: true
+  provider: cloudflare         # passed to the chart as provider.name
+  domainFilters:               # optional: only manage these zones
+    - example.com
+  externalSecret:
+    vault: my-vault            # optional with exactly one vault declared
+    path: dns/cloudflare       # where in the vault the provider token lives
+    key: token                 # optional, defaults to "token"
+```
+
+The credential itself never appears in git: the operator creates an
+ExternalSecret named `<provider>-external-dns` that pulls `path`/`key` out of
+the vault — which is why external-dns requires external-secrets with at least
+one vault (its own `vault:` field or the first declared one).
+
+For `provider: cloudflare` the synced Secret is wired into the chart as
+`CF_API_TOKEN` automatically. For every other
+[provider the chart supports](https://kubernetes-sigs.github.io/external-dns/),
+the Secret is created but the env wiring is yours: add it through a
+`PlatformPatch` on the cluster, or extend the switch in the operator's
+`reconcileExternalDNS`.
+
 ## Two traps this repository has already fallen into
 
 **A version bump does not carry values forward.** Renovate changes the
@@ -93,9 +160,14 @@ schema rejects unknown keys outright, so every install failed with
 as ready regardless, because writing the `HelmRelease` had succeeded.
 
 **A pin above every published version is invisible.** Loki was pinned to
-`13.6.1` while the chart's newest release is in the 7.x line. Renovate sees
-nothing newer and stays silent, so it looks maintained. Only rendering it shows
-the truth.
+`13.6.1` while the chart's releases were in the 7.x line. Renovate sees nothing
+newer and stays silent, so it looks maintained. Only rendering it shows the
+truth. The repo move made it happen a second time in the other direction: the
+operator switched to the grafana-community fork (which numbers the chart 18.x)
+while the pin stayed at `7.3.0` — a version that exists only in the frozen
+original repo, so `helm pull` failed on every cluster. The `registryUrl` in the
+renovate comment and the repository the operator installs from must be the same
+place.
 
 Both mean the same thing in practice: when you touch a `version:` line, read the
 chart's changelog for renamed values, and run the render above.

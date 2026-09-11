@@ -1,12 +1,15 @@
 apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
-  # renovate: datasource=helm registryUrl=https://grafana.github.io/helm-charts chart=loki
+  # renovate: datasource=helm registryUrl=https://grafana-community.github.io/helm-charts chart=loki
   #
-  # Was pinned to 13.6.1, a version that does not exist: the chart's newest
-  # release is in the 7.x line. Renovate could not catch it either, because a
-  # pin above every published version simply looks like "no update available".
-  version: 7.3.0
+  # The chart moved: grafana.github.io/helm-charts froze at 7.3.0 (2026-08),
+  # the community fork at grafana-community.github.io continues it with its
+  # own numbering in the 18.x line. The operator's default repository already
+  # points at the fork, so a 7.x pin here resolves against an index where it
+  # does not exist and Loki cannot install at all -- version and registryUrl
+  # must name the same repository.
+  version: 18.12.1
   valuesObject:
     # The chart renders nothing without a storage decision -- it fails on
     # "Please define loki.storage.bucketNames.chunks" -- so an empty
@@ -17,7 +20,8 @@ spec:
     # collect its own logs, and deliberately not a production topology -- for
     # that, point loki.storage at a bucket and move off SingleBinary. Both are
     # overridable per cluster through spec.loki.patches.
-    deploymentMode: SingleBinary
+    # 18.x renames the mode; "SingleBinary" is the deprecated alias.
+    deploymentMode: Monolithic
     loki:
       commonConfig:
         replication_factor: 1
