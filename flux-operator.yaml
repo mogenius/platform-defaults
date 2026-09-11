@@ -8,5 +8,5 @@ spec:
   # answers 404 -- so Renovate could not resolve the chart and never proposed a
   # bump. The version sat where it was put, and nothing said so.
   # renovate: datasource=docker packageName=ghcr.io/controlplaneio-fluxcd/charts/flux-operator
-  version: 0.59.0
+  version: 0.60.0
   valuesObject: {}
