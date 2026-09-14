@@ -10,5 +10,13 @@
         "# renovate: datasource=(?<datasource>[^\\s]+) packageName=(?<packageName>[^\\s]+)\\n\\s+version:\\s+(?<currentValue>[^\\s]+)"
       ]
     }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true
+    }
   ]
 }
