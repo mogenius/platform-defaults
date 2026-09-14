@@ -2,7 +2,7 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=docker packageName=ghcr.io/mogenius/helm-charts/renovate-operator
-  version: 4.7.1
+  version: 5.6.0
   valuesObject:
     crd:
       mode: template
