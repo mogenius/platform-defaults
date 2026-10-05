@@ -21,7 +21,7 @@ spec:
       allowPrivilegeEscalation: false
 
     config:
-      enableGatewayAPI: true
+      enableGatewayAPI: false
 
     extraArgs:
       - --logging-format=json
