@@ -87,7 +87,8 @@ far.
 
 Most components install with `enabled: true` and nothing else. Two of them
 cannot, because they are useless without cluster-specific input, and the UI
-links here when that input is missing.
+links here when that input is missing. A third, agent-sandboxes, installs on
+its own but takes optional isolation settings that are worth knowing about.
 
 ### external-secrets-operator
 
@@ -149,6 +150,33 @@ For `provider: cloudflare` the synced Secret is wired into the chart as
 the Secret is created but the env wiring is yours: add it through a
 `PlatformPatch` on the cluster, or extend the switch in the operator's
 `reconcileExternalDNS`.
+
+### agent-sandboxes
+
+Installs the agent-sandbox system — an isolated namespace for running untrusted
+agent code, the default SandboxTemplate and warm pool, and a per-sandbox
+NetworkPolicy. `enabled: true` is enough; everything below is optional:
+
+```yaml
+agentSandboxes:
+  enabled: true
+  namespace: agent-sandbox        # optional, where sandbox pods run
+  networkPolicy:
+    managed: true                 # optional, default — controller owns the NetworkPolicy
+    additionalBlockedCidrs:       # optional, egress-blocked on top of the defaults
+      - 34.118.224.0/20           # e.g. the kube-apiserver CIDR (cluster-specific)
+```
+
+The managed NetworkPolicy already denies RFC1918 and link-local egress — the
+latter covering the `169.254.169.254` metadata endpoint, the classic SSRF/exfil
+vector for untrusted code. The Kubernetes API server, however, often sits on a
+CIDR outside RFC1918 (on GKE the ClusterIP is in `34.118.224.0/20`), so block it
+explicitly through `additionalBlockedCidrs`. Set `managed: false` only when
+another controller (Cilium, a cluster NetworkPolicy of your own) owns egress.
+
+gVisor / `runtimeClassName` is not modelled on the PlatformConfig yet; where a
+cluster already has a RuntimeClass, set it through a `PlatformPatch` until the
+dedicated field lands.
 
 ## Two traps this repository has already fallen into
 
