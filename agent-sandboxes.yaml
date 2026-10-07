@@ -1,14 +1,13 @@
 apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
+# The mogenius chart that brings up the whole agent-sandbox system: the
+# kubernetes-sigs/agent-sandbox controller with extensions, a locked-down
+# sandbox namespace, the default SandboxTemplate + warm pool, and a per-sandbox
+# NetworkPolicy. The operator installs it as the `agentSandboxes` PlatformConfig
+# component; the chart's own defaults already stand a cluster up, so this file
+# mostly pins the version.
 spec:
   # renovate: datasource=helm registryUrl=https://helm.mogenius.com/public chart=mogenius-agent-sandbox
-  #
-  # The mogenius chart that brings up the whole agent-sandbox system: the
-  # kubernetes-sigs/agent-sandbox controller with extensions, a locked-down
-  # sandbox namespace, the default SandboxTemplate + warm pool, and a per-sandbox
-  # NetworkPolicy. The operator installs it as the `agentSandboxes` PlatformConfig
-  # component; the chart's own defaults already stand a cluster up, so this file
-  # mostly pins the version.
   version: 1.2.1
   valuesObject:
     sandboxes:
