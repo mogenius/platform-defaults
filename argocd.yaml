@@ -2,7 +2,7 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=helm registryUrl=https://argoproj.github.io/argo-helm chart=argo-cd
-  version: 10.10.5
+  version: 10.11.6
   valuesObject:
     releaseName: argocd
     valuesObject:
