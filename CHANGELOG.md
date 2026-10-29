@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.1.1](https://github.com/mogenius/platform-defaults/compare/v1.1.0...v1.1.1) (2026-10-29)
+
+
+### Bug Fixes
+
+* **deps:** update ghcr.io/controlplaneio-fluxcd/charts/flux-operator docker tag to v0.62.1 ([577efd1](https://github.com/mogenius/platform-defaults/commit/577efd1d92b0d18003c8570530fd83e24548ba47))
+* **deps:** update ghcr.io/controlplaneio-fluxcd/charts/flux-operator docker tag to v0.62.1 ([c706fc2](https://github.com/mogenius/platform-defaults/commit/c706fc229eac78277fdbead272849dc5cd2ad258))
+* **deps:** update ghcr.io/mogenius/helm-charts/renovate-operator docker tag to v6.6.0 ([2cf079f](https://github.com/mogenius/platform-defaults/commit/2cf079fcae8d120a13e1a54a545e8b655672f41d))
+* **deps:** update ghcr.io/mogenius/helm-charts/renovate-operator docker tag to v6.6.0 ([a3a104a](https://github.com/mogenius/platform-defaults/commit/a3a104a73d9b3d6b8aad783225e9e214e63a5503))
+* **deps:** update helm release alloy to v1.14.1 ([6b21d1a](https://github.com/mogenius/platform-defaults/commit/6b21d1a28a460aaed091864905f53cfa4b578f1d))
+* **deps:** update helm release alloy to v1.14.3 ([#93](https://github.com/mogenius/platform-defaults/issues/93)) ([96685c7](https://github.com/mogenius/platform-defaults/commit/96685c71b60edd6ad8b3472e52a6e73fcb419e79))
+* **deps:** update helm release alloy to v1.14.4 ([#103](https://github.com/mogenius/platform-defaults/issues/103)) ([25e1c5b](https://github.com/mogenius/platform-defaults/commit/25e1c5b4487c21bddbd91f586f679213484832dc))
+* **deps:** update helm release argo-cd to v10.11.6 ([e634620](https://github.com/mogenius/platform-defaults/commit/e63462012e4d6369f429953f350a35e69394b35e))
+* **deps:** update helm release argo-cd to v10.11.6 ([5f021c3](https://github.com/mogenius/platform-defaults/commit/5f021c3263f61165488d597be4158b874575cc40))
+* **deps:** update helm release cert-manager to v1.21.3 ([#96](https://github.com/mogenius/platform-defaults/issues/96)) ([5e82e5d](https://github.com/mogenius/platform-defaults/commit/5e82e5dd5c5d2c434d96e9caa61956b82e9a3ffc))
+* **deps:** update helm release external-secrets to v2.14.0 ([efa755e](https://github.com/mogenius/platform-defaults/commit/efa755ebf9a2c69b1ef0d5139fa86c6c89a6b02e))
+* **deps:** update helm release external-secrets to v2.14.0 ([9789a30](https://github.com/mogenius/platform-defaults/commit/9789a307db8949e0ec0e7354e20eadd0609de70a))
+* **deps:** update helm release kube-prometheus-stack to v92.11.0 ([d44f536](https://github.com/mogenius/platform-defaults/commit/d44f536925e6da494050e03a3663bce9af7b5055))
+* **deps:** update helm release kube-prometheus-stack to v92.11.1 ([#97](https://github.com/mogenius/platform-defaults/issues/97)) ([07347dc](https://github.com/mogenius/platform-defaults/commit/07347dc6d56912a5bda8d67d51c102a770d29d6e))
+* **deps:** update helm release kube-prometheus-stack to v92.14.1 ([afa7289](https://github.com/mogenius/platform-defaults/commit/afa728923b03b87c10a7f109496ad8f202179193))
+* **deps:** update helm release kube-prometheus-stack to v92.14.1 ([4abb45f](https://github.com/mogenius/platform-defaults/commit/4abb45f24baa0b7470b769d0e189b477a8678db6))
+* **deps:** update helm release mogenius-agent-sandbox to v1.3.1 ([36ecd60](https://github.com/mogenius/platform-defaults/commit/36ecd60da3bb02567e88f992525abc9b4ec46133))
+* **deps:** update helm release mogenius-agent-sandbox to v1.3.1 ([6162457](https://github.com/mogenius/platform-defaults/commit/616245703b8eb43e19580b3b8b1f73e0b435f32f))
+* **deps:** update helm release traefik to v42.1.0 ([2ad018e](https://github.com/mogenius/platform-defaults/commit/2ad018e1f9f0cd5b9b48daea7df4ef77cc0f8a03))
+* **deps:** update helm release traefik to v42.1.2 ([14ead04](https://github.com/mogenius/platform-defaults/commit/14ead040500747c728e88231fe4b0babb833f256))
+* **deps:** update helm release traefik to v42.1.3 ([#94](https://github.com/mogenius/platform-defaults/issues/94)) ([6bf7828](https://github.com/mogenius/platform-defaults/commit/6bf7828eb0b1dbd002d64dd7de5cf264b7009470))
+* **eso:** increase memory limits to 500Mi ([e85eebb](https://github.com/mogenius/platform-defaults/commit/e85eebbf2003f05047389e26919126029f45598d))
+
 ## [1.1.0](https://github.com/mogenius/platform-defaults/compare/v1.0.0...v1.1.0) (2026-10-19)
 
 
