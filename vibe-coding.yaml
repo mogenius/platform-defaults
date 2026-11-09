@@ -1,0 +1,6 @@
+apiVersion: mogenius.com/v1alpha1
+kind: PlatformDefault
+spec:
+  # renovate: datasource=ghcr.io/mogenius/vibe-coding-gitops-infra
+  version: 0.3.0
+  valuesObject: {}
