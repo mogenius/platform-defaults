@@ -2,5 +2,5 @@ apiVersion: mogenius.com/v1alpha1
 kind: PlatformDefault
 spec:
   # renovate: datasource=docker packageName=ghcr.io/mogenius/vibe-coding-gitops-infra
-  version: 1.2.0
+  version: 1.6.1
   valuesObject: {}
