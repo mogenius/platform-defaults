@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/mogenius/platform-defaults/compare/v1.2.0...v1.2.1) (2026-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update ghcr.io/mogenius/helm-charts/renovate-operator docker tag to v6.9.0 ([0450697](https://github.com/mogenius/platform-defaults/commit/0450697f14f30d283d5971bdc45b9f5e716bd791))
+* **deps:** update ghcr.io/mogenius/helm-charts/renovate-operator docker tag to v6.9.0 ([3c4f0c7](https://github.com/mogenius/platform-defaults/commit/3c4f0c76c25db603c46d2f8a39579d86695f11ee))
+
 ## [1.2.0](https://github.com/mogenius/platform-defaults/compare/v1.1.0...v1.2.0) (2026-11-13)
 
 
