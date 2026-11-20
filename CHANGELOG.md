@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.1](https://github.com/mogenius/platform-defaults/compare/v1.2.0...v1.2.1) (2026-11-20)
+
+
+### Bug Fixes
+
+* **deps:** update ghcr.io/mogenius/helm-charts/renovate-operator docker tag to v6.9.0 ([0450697](https://github.com/mogenius/platform-defaults/commit/0450697f14f30d283d5971bdc45b9f5e716bd791))
+* **deps:** update ghcr.io/mogenius/helm-charts/renovate-operator docker tag to v6.9.0 ([3c4f0c7](https://github.com/mogenius/platform-defaults/commit/3c4f0c76c25db603c46d2f8a39579d86695f11ee))
+* **deps:** update helm release argo-cd to v10.18.1 ([#137](https://github.com/mogenius/platform-defaults/issues/137)) ([4d3208f](https://github.com/mogenius/platform-defaults/commit/4d3208f53cd41f87029f41cd585356d51bf13034))
+* **deps:** update helm release argo-cd to v10.18.2 ([#140](https://github.com/mogenius/platform-defaults/issues/140)) ([aa4dc19](https://github.com/mogenius/platform-defaults/commit/aa4dc19c429944e38ec42ca9565ef5e78c81d166))
+* **deps:** update helm release kube-prometheus-stack to v93.4.0 ([90da88c](https://github.com/mogenius/platform-defaults/commit/90da88c4ba8f9ba9e34727aee0bc2ad27ead45d2))
+* **deps:** update helm release kube-prometheus-stack to v93.4.0 ([0a3506b](https://github.com/mogenius/platform-defaults/commit/0a3506bf65ce3465a668e21f6fd569f7fbb40eb8))
+* **deps:** update helm release kube-prometheus-stack to v93.4.1 ([#139](https://github.com/mogenius/platform-defaults/issues/139)) ([b0e669b](https://github.com/mogenius/platform-defaults/commit/b0e669b098b4c55187998cc21c2037d405e230f2))
+* **deps:** update helm release traefik to v42.4.1 ([7ea76b7](https://github.com/mogenius/platform-defaults/commit/7ea76b771e59b3dbbc086c7f6e8dbb0ac227a9e5))
+* **deps:** update helm release traefik to v42.4.1 ([cdb30b0](https://github.com/mogenius/platform-defaults/commit/cdb30b0d1b5f08feff5418c45ee06fc99e7cbb23))
+
 ## [1.2.0](https://github.com/mogenius/platform-defaults/compare/v1.1.0...v1.2.0) (2026-11-13)
 
 
