@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.2](https://github.com/mogenius/platform-defaults/compare/v1.2.1...v1.2.2) (2026-11-27)
+
+
+### Bug Fixes
+
+* **deps:** update ghcr.io/mogenius/vibe-coding-gitops-infra docker tag to v1.18.1 ([#154](https://github.com/mogenius/platform-defaults/issues/154)) ([4020fde](https://github.com/mogenius/platform-defaults/commit/4020fde085f207b40d568694b4147b3fafc3e216))
+* **deps:** update helm release argo-cd to v10.18.4 ([#146](https://github.com/mogenius/platform-defaults/issues/146)) ([cfccc56](https://github.com/mogenius/platform-defaults/commit/cfccc569a3421d85996c8e1fbb4edf8c568056e1))
+* **deps:** update helm release traefik to v42.4.3 ([#147](https://github.com/mogenius/platform-defaults/issues/147)) ([2290a59](https://github.com/mogenius/platform-defaults/commit/2290a59efe0ae913aa194bfd972a8e998ee1e276))
+
 ## [1.2.1](https://github.com/mogenius/platform-defaults/compare/v1.2.0...v1.2.1) (2026-11-23)
 
 
